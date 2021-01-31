@@ -3,13 +3,18 @@ import styles from "../styles/Home.module.css";
 import ButtonS, { Button } from "../components/Button";
 
 export default function Home() {
-  const obj = new Object();
-
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <meta description="test" />
+        <meta
+          name="description"
+          content="Meta descriptions can have a surprisingly large impact on your search marketing campaigns; find out how..."
+        />
+        <meta
+          name="keywords"
+          content="meta description,google meta description,meta name description"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

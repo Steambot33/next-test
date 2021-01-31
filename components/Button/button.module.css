@@ -1,5 +1,5 @@
 .default {
-  color: var(--color, var(--pink40));
+  color: var(--color, var(--black));
   height: var(--height);
   width: var(--width);
   background-color: var(--bg-color, palevioletred);
