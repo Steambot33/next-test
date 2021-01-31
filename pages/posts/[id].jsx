@@ -1,4 +1,14 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 const Post = ({ userId, title, body }) => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    console.log("Mounted", id);
+  }, []);
+
   return (
     <>
       <h1>
@@ -9,10 +19,23 @@ const Post = ({ userId, title, body }) => {
   );
 };
 
-Post.getInitialProps = async ctx => {
-  const { id } = ctx.query;
+export const getStaticProps = async ctx => {
+  const { id } = ctx.params;
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-  return await res.json();
+  const json = await res.json();
+  return { props: json };
+};
+
+export const getStaticPaths = async () => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  const posts = await res.json();
+
+  return {
+    paths: posts.map(post => ({
+      params: { id: String(post.id) }
+    })),
+    fallback: false
+  };
 };
 
 export default Post;
