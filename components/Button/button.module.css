@@ -1,0 +1,7 @@
+.default {
+  color: var(--color, var(--pink40));
+  height: var(--height);
+  width: var(--width);
+  background-color: var(--bg-color, palevioletred);
+  box-sizing: border-box;
+}
